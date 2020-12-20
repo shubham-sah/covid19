@@ -120,10 +120,17 @@ class _FormScreenState extends State<FormScreen> {
                     border: OutlineInputBorder(),
                     labelText: "E-mail",
                   ),
-                  validator: (val) =>
+                  /*validator: (val) =>
                       val.isEmpty ? 'Enter a valid email' : null,
                   onChanged: (val) {
                     setState(() => email = val);
+                  }, */
+                  validator: (val) {
+                    return RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(val)
+                        ? null
+                        : "Enter valid email address";
                   },
                 ),
                 //phone
